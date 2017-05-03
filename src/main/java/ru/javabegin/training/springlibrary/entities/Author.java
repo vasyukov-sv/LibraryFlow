@@ -36,14 +36,8 @@ public class Author {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Author author = (Author) o;
-
-        if (id != author.id) return false;
-        if (birthday != null ? !birthday.equals(author.birthday) : author.birthday != null) return false;
-        if (fio != null ? !fio.equals(author.fio) : author.fio != null) return false;
-
-        return true;
+        return id == author.id && (birthday != null ? birthday.equals(author.birthday) : author.birthday == null) && (fio != null ? fio.equals(author.fio) : author.fio == null);
     }
 
     @Override
