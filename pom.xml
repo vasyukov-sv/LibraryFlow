@@ -101,7 +101,7 @@
             <version>${springsecurity-version}</version>
         </dependency>
 
-
+        <!--Логгирование-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
