@@ -150,21 +150,19 @@ public class Book implements java.io.Serializable {
 
         Book book = (Book) o;
 
-        if (!author.equals(book.author)) return false;
-        if (!Arrays.equals(content, book.content)) return false;
-        if (!descr.equals(book.descr)) return false;
-        if (!genre.equals(book.genre)) return false;
-        if (!id.equals(book.id)) return false;
-        if (!Arrays.equals(image, book.image)) return false;
-        if (!isbn.equals(book.isbn)) return false;
-        if (!name.equals(book.name)) return false;
-        if (!pageCount.equals(book.pageCount)) return false;
-        if (!publishYear.equals(book.publishYear)) return false;
-        if (!publisher.equals(book.publisher)) return false;
-        if (!rating.equals(book.rating)) return false;
-        if (!voteCount.equals(book.voteCount)) return false;
-
-        return true;
+        return author.equals(book.author) &&
+                Arrays.equals(content, book.content) &&
+                descr.equals(book.descr) &&
+                genre.equals(book.genre) &&
+                id.equals(book.id) &&
+                Arrays.equals(image, book.image) &&
+                isbn.equals(book.isbn) &&
+                name.equals(book.name) &&
+                pageCount.equals(book.pageCount) &&
+                publishYear.equals(book.publishYear) &&
+                publisher.equals(book.publisher) &&
+                rating.equals(book.rating) &&
+                voteCount.equals(book.voteCount);
     }
 
     @Override

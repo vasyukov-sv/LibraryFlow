@@ -7,8 +7,10 @@ import ru.javabegin.training.springlibrary.entities.Genre;
 import java.util.List;
 
 /**
+ * LibraryFlow
  * Created by sbt-vasyukov-sv on 25.04.2017 12:49.
  */
+@SuppressWarnings({"SameReturnValue", "unused"})
 public interface BookDAO {
 
     List getBooks();

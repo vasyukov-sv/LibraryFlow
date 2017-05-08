@@ -1,7 +1,7 @@
 package ru.javabegin.training.springlibrary.entities;
 
 
-public class Vote {
+class Vote {
     private long id;
     private Integer value;
     private long bookId;
@@ -46,12 +46,7 @@ public class Vote {
 
         Vote vote = (Vote) o;
 
-        if (bookId != vote.bookId) return false;
-        if (id != vote.id) return false;
-        if (username != null ? !username.equals(vote.username) : vote.username != null) return false;
-        if (value != null ? !value.equals(vote.value) : vote.value != null) return false;
-
-        return true;
+        return bookId == vote.bookId && id == vote.id && (username != null ? username.equals(vote.username) : vote.username == null) && (value != null ? value.equals(vote.value) : vote.value == null);
     }
 
     @Override

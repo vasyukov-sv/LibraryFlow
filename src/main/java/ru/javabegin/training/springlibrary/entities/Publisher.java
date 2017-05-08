@@ -28,10 +28,7 @@ public class Publisher {
 
         Publisher publisher = (Publisher) o;
 
-        if (id != publisher.id) return false;
-        if (name != null ? !name.equals(publisher.name) : publisher.name != null) return false;
-
-        return true;
+        return id == publisher.id && (name != null ? name.equals(publisher.name) : publisher.name == null);
     }
 
     @Override

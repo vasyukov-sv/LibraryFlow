@@ -13,19 +13,25 @@ import ru.javabegin.training.springlibrary.entities.Genre;
 import java.util.List;
 
 /**
+ * LibraryFlow
  * Created by sbt-vasyukov-sv on 25.04.2017 12:50.
  */
 @Component
 public class BookDAOImpl implements BookDAO {
 
+    private final SessionFactory sessionFactory;
+    @SuppressWarnings("FieldCanBeLocal")
+    private List<?> books;
+
     @Autowired
-    private SessionFactory sessionFactory;
-    private List<Book> books;
+    public BookDAOImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Transactional
     @Override
-    public List<Book> getBooks() {
-        books = (List<Book>) sessionFactory.getCurrentSession()
+    public List<?> getBooks() {
+        books = (List<?>) sessionFactory.getCurrentSession()
                 .createCriteria(Book.class)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
                 .list();
