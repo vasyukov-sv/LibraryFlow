@@ -24,7 +24,6 @@ public class BookDAOImpl implements BookDAO {
     private final SessionFactory sessionFactory;
     private ProjectionList bookProjection;
 
-    @SuppressWarnings("FieldCanBeLocal")
     private List<Book> books;
 
     @Autowired
@@ -75,7 +74,6 @@ public class BookDAOImpl implements BookDAO {
         return createBookList(createBookCriteria().add(Restrictions.ilike("b.name", letter.toString(), MatchMode.START)));
     }
 
-    @SuppressWarnings("unchecked")
     private List<Book> createBookList(DetachedCriteria bookListCriteria) {
         Criteria criteria = bookListCriteria.getExecutableCriteria(sessionFactory.getCurrentSession());
         return criteria.addOrder(Order.asc("b.name"))

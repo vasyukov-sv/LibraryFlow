@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>Facelet Title</title>
 </h:head>
@@ -17,7 +17,7 @@
             <h:form styleClass="search_form" id="search_form">
 
 
-                <input type="submit" class="button-text"></input>
+                <input type="submit" class="button-text"/>
 
 
                 <h:inputText id="search_string" styleClass="search-text"/>
@@ -26,7 +26,11 @@
 
 
                 <div class="dropdown">
-                    <h:selectOneMenu id="search_select"/>
+                    <!--@elvariable id="utils" type="ru.javabegin.training.springlibrary.objects.Utils"-->
+                    <h:selectOneMenu id="search_select" styleClass="selectBox-arrow"
+                                     value="#{utils.selectedSearchType}">
+                        <f:selectItems value="${utils.searchTypeMap}"/>
+                    </h:selectOneMenu>
                 </div>
 
                 <script language="javascript" type="application/javascript">
