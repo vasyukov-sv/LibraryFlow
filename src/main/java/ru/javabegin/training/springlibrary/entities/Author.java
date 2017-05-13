@@ -12,18 +12,13 @@ public class Author {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return fio;
-    }
-
-    @Override
-    public String toString() {
-        return fio;
-    }
-
     public void setId(long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return fio;
     }
 
     public String getFio() {
