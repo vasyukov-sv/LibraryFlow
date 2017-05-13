@@ -14,6 +14,8 @@ import ru.javabegin.training.springlibrary.entities.Genre;
 
 import java.util.List;
 
+import static ru.javabegin.training.springlibrary.objects.Utils.castList;
+
 /**
  * LibraryFlow
  * Created by sbt-vasyukov-sv on 25.04.2017 12:50.
@@ -23,8 +25,6 @@ public class BookDAOImpl implements BookDAO {
 
     private final SessionFactory sessionFactory;
     private ProjectionList bookProjection;
-
-    private List<Book> books;
 
     @Autowired
     public BookDAOImpl(SessionFactory sessionFactory) {
@@ -75,11 +75,11 @@ public class BookDAOImpl implements BookDAO {
     }
 
     private List<Book> createBookList(DetachedCriteria bookListCriteria) {
-        Criteria criteria = bookListCriteria.getExecutableCriteria(sessionFactory.getCurrentSession());
-        return criteria.addOrder(Order.asc("b.name"))
+        Criteria criteria = bookListCriteria.getExecutableCriteria(sessionFactory.getCurrentSession())
+                .addOrder(Order.asc("b.name"))
                 .setProjection(bookProjection)
-                .setResultTransformer(Transformers.aliasToBean(Book.class))
-                .list();
+                .setResultTransformer(Transformers.aliasToBean(Book.class));
+        return castList(Book.class, criteria.list());
     }
 
     private void createAliases(DetachedCriteria criteria) {
