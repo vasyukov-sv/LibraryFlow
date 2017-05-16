@@ -14,6 +14,7 @@
         <div class="left-menu">
             <h:form styleClass="genres" id="genresForm">
                 <ul>
+                    <!--@elvariable id="genreDAOImpl" type="ru.javabegin.training.springlibrary.dao.interfaces.GenreDAO"-->
                     <ui:repeat value="${genreDAOImpl.genres}" var="g">
                         <li>
                             <p:commandLink value="${g.name}"/>
@@ -25,4 +26,3 @@
     </ui:composition>
 </h:body>
 </html>
-

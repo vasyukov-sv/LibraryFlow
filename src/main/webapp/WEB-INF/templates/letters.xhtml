@@ -10,26 +10,20 @@
 </h:head>
 <h:body>
     <ui:composition>
-
-
         <div class="nav">
-
             <h:form id="lettersForm">
                 <ul>
+                    <!--@elvariable id="utils" type="ru.javabegin.training.springlibrary.objects.Utils"-->
                     <ui:repeat value="${utils.letters}" var="letter">
                         <li>
-                            <p:commandLink value="#{letter}"/>
+                            <!--@elvariable id="searchCriteria" type="ru.javabegin.training.springlibrary.objects.SearchCriteria"-->
+                            <p:commandLink value="#{letter}" action="searchByLetter"
+                                           actionListener="#{searchCriteria.setLetter(letter)}" ajax="false"/>
                         </li>
                     </ui:repeat>
-
                 </ul>
             </h:form>
-
-
         </div>
-
-
     </ui:composition>
 </h:body>
 </html>
-

@@ -4,7 +4,6 @@ package ru.javabegin.training.springlibrary.entities;
 public class Genre {
     private long id;
     private String name;
-    private Long parent;
 
     public long getId() {
         return id;

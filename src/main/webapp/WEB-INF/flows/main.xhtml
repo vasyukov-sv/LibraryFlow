@@ -19,6 +19,7 @@
         <h:form id="booksForm">
 
 
+            <!--@elvariable id="libraryFacade" type="ru.javabegin.training.springlibrary.objects.LibraryFacade"-->
             <p:dataGrid rowIndexVar="rowIndex" columns="2" lazy="true" var="b" value="${libraryFacade.books}"
                         id="booksList" styleClass="books_list" paginator="true" rows="4" paginatorPosition="bottom"
                         rowsPerPageTemplate="4,10,20" paginatorTemplate="{RowsPerPageDropdown} {PageLinks}"
@@ -32,6 +33,7 @@
                         <h:outputLink styleClass="content_link" target="_blank">
                             <p:graphicImage width="110" height="150"/>
                         </h:outputLink>
+
 
                         <p:panelGrid id="ratingPanel" columns="2">
 
@@ -51,9 +53,13 @@
 
                         </div>
                         <span>#{b.author}</span>
+
                         <p><strong>#{msg.page_count}:</strong> #{b.pageCount}</p>
+
                         <p><strong>#{msg.publisher}</strong> #{b.publisher}</p>
+
                         <p><strong>#{msg.publish_year}</strong> #{b.publishYear} г.</p>
+
                         <p><strong>#{msg.isbn}</strong> #{b.isbn}</p>
 
                     </div>
@@ -84,6 +90,24 @@
 
         </h:form>
 
+
+    </ui:define>
+
+
+    <ui:define name="books_count">
+
+        <div class="box-sh">
+
+            <h1><p:outputLabel id="booksCount" value="#{msg.book_count}:  #{libraryFacade.books.size()}"/></h1>
+
+            <h:form id="add-action">
+                <p:commandLink>
+                    <h:outputText value="#{msg.add_book}" title="#{msg.add_book}"/>
+                </p:commandLink>
+            </h:form>
+
+
+        </div>
 
     </ui:define>
 
