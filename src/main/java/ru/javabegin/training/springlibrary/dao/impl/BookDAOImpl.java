@@ -70,10 +70,6 @@ public class BookDAOImpl implements BookDAO {
     @Transactional
     @Override
     public List<Book> getBooks(Character letter) {
-
-//            return createBookList(createBookCriteria().add(Restrictions.eqOrIsNull("b.name","Незнайка на луне")));
-//                    .add(Restrictions.like("name",letter.toString(),MatchMode.START)));
-
         return createBookList(createBookCriteria().add(Restrictions.ilike("b.name", letter.toString(), MatchMode.START)));
     }
 
