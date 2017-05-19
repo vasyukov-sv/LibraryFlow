@@ -5,6 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
 
 <ui:composition template="/WEB-INF/templates/library.xhtml">
@@ -14,26 +15,17 @@
     </ui:define>
 
     <ui:define name="content">
-
-
         <h:form id="booksForm">
-
-
             <!--@elvariable id="libraryFacade" type="ru.javabegin.training.springlibrary.objects.LibraryFacade"-->
             <p:dataGrid rowIndexVar="rowIndex" columns="2" lazy="true" var="b" value="${libraryFacade.books}"
                         id="booksList" styleClass="books_list" paginator="true" rows="4" paginatorPosition="bottom"
                         rowsPerPageTemplate="4,10,20" paginatorTemplate="{RowsPerPageDropdown} {PageLinks}"
                         paginatorAlwaysVisible="true" emptyMessage="">
-
-
                 <div class="item">
-
                     <div class="image-info">
-
                         <h:outputLink styleClass="content_link" target="_blank">
-                            <p:graphicImage width="110" height="150"/>
+                            <p:graphicImage value="/ShowImage?index=#{rowIndex}" width="110" height="150"/>
                         </h:outputLink>
-
 
                         <p:panelGrid id="ratingPanel" columns="2">
 
@@ -47,11 +39,15 @@
 
                     <div class="info">
                         <div class="book_name">
-                            <h:outputLink id="bookName" styleClass="title" target="_blank">
+                            <h:outputLink id="bookName" styleClass="title" value="#{request.contextPath}/PdfContent"
+                                          target="_blank">
                                 #{b.name}
+                                <f:param name="id" value="#{b.id}"/>
+                                <f:param name="save" value="false"/>
                             </h:outputLink>
 
                         </div>
+
                         <span>#{b.author}</span>
 
                         <p><strong>#{msg.page_count}:</strong> #{b.pageCount}</p>
@@ -65,13 +61,21 @@
                     </div>
 
 
-                    <h:outputLink styleClass="mr" target="_blank">
+                    <h:outputLink styleClass="mr" value="#{request.contextPath}/PdfContent" target="_blank">
                         <p class="read">#{msg.read}</p>
+                        <f:param name="id" value="#{b.id}"/>
+                        <f:param name="save" value="false"/>
                     </h:outputLink>
 
-                    <h:outputLink styleClass="mr" target="_blank">
+                    <h:outputLink styleClass="mr" value="#{request.contextPath}/PdfContent" target="_blank">
+
                         <p class="download">#{msg.download}</p>
+                        <f:param name="id" value="#{b.id}"/>
+                        <f:param name="filename" value="#{b.name}"/>
+                        <f:param name="save" value="true"/>
+
                     </h:outputLink>
+
 
                     <p:commandLink styleClass="mr" title="#{msg.edit_book}">
                         <p class="edit">#{msg.edit}</p>

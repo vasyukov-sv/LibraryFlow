@@ -11,7 +11,6 @@ import java.util.List;
  * Created by sbt-vasyukov-sv on 25.04.2017 12:49.
  */
 public interface BookDAO {
-
     List getBooks();
 
     List<Book> getBooks(Author author);
@@ -22,4 +21,5 @@ public interface BookDAO {
 
     List<Book> getBooks(Character letter);
 
+    Object getFieldValue(Long id, String fieldName);
 }

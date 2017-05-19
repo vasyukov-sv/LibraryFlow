@@ -678,19 +678,19 @@ body {
 }
 
 .noborder-button {
-    text-decoration: none !important;
-    color: #888 !important;
-    display: block !important;;
-    border: 0px none !important;;
-    font-family: Arial, sans-serif !important;;
-    font-size: 1.1em !important;;
-    background: none repeat scroll 0% 0% transparent !important;;
-    text-align: center !important;
-    list-style: outside none none !important;
-    width: 25.5px !important;;
+    text-decoration: none;
+    color: #888;
+    display: block;
+    border: 0 none;
+    font-family: Arial, sans-serif;
+    font-size: 1.1em;
+    background: none repeat scroll 0 0 transparent;
+    text-align: center;
+    list-style: outside none none;
+    width: 26px;
     padding: 10px;
     cursor: pointer;
-    box-shadow: none !important;;
+    box-shadow: none;
 }
 
 .noborder-button span {

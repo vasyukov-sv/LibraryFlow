@@ -62,6 +62,15 @@
         <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
     </bean>
 
+    <bean class="org.springframework.web.context.support.ServletContextAttributeExporter">
+        <property name="attributes">
+            <map>
+                <entry key="libraryFacade" value-ref="libraryFacade"/>
+            </map>
+        </property>
+    </bean>
+
+
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate4.HibernateTransactionManager">
