@@ -6,6 +6,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:sec="http://www.springframework.org/security/tags"
+
 >
 
 <ui:composition template="/WEB-INF/templates/library.xhtml">
@@ -77,11 +79,13 @@
                     </h:outputLink>
 
 
-                    <p:commandLink styleClass="mr" title="#{msg.edit_book}">
+                    <p:commandLink styleClass="mr" title="#{msg.edit_book}"
+                                   rendered="#{sec:areAllGranted('ROLE_ADMIN')}">
                         <p class="edit">#{msg.edit}</p>
                     </p:commandLink>
 
-                    <p:commandLink styleClass="delete-button" title="#{msg.delete_book}" type="button">
+                    <p:commandLink styleClass="delete-button" title="#{msg.delete_book}" type="button"
+                                   rendered="#{sec:areAllGranted('ROLE_ADMIN')}">
                         <p class="delete">#{msg.delete}</p>
                     </p:commandLink>
 

@@ -4,14 +4,21 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>WEB-INF/config/spring/applicationContext.xml</param-value>
-    </context-param>
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
 
     <servlet>
         <servlet-name>dispatcher</servlet-name>
@@ -40,17 +47,41 @@
         <url-pattern>*.faces</url-pattern>
     </servlet-mapping>
 
+    <!--<context-param>-->
+    <!--store data which is common for whole application and  it doesn't change frequently-->
+
+    <!--The javax.faces.DEFAULT_SUFFIX represents the default suffix of the physical file you've in your webapplication
+     which represents a JSF file .xhtml is default-->
+    <!--<context-param>-->
+    <!--<param-name>javax.faces.DEFAULT_SUFFIX</param-name>-->
+    <!--<param-value>.xhtml</param-value>-->
+    <!--</context-param>-->
 
     <context-param>
-        <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
-        <param-value>.xhtml</param-value>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>bootstrap</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>javax.faces.FACELETS_LIBRARIES</param-name>
+        <param-value>/WEB-INF/springsecurity.taglib.xml</param-value>
+    </context-param>
 
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            WEB-INF/config/spring/applicationContext.xml
+            WEB-INF/config/spring/spring-security.xml
+        </param-value>
+    </context-param>
 
-
-
+    <!--A welcome file is the file that is invoked automatically by the server,-->
+    <!--By default server looks for the welcome file in following order:-->
+    <!--welcome-file-list in web.xml-->
+    <!--index.html-->
+    <!--index.htm-->
+    <!--index.jsp-->
+    <!--<welcome-file-list>-->
+    <!--<welcome-file>index.html</welcome-file>-->
+    <!--</welcome-file-list>-->
 </web-app>
